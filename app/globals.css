@@ -1,0 +1,46 @@
+@import "tailwindcss";
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+}
+
+/* Utility for glass-like cards */
+.glass {
+  @apply bg-white/5 backdrop-blur-lg border border-white/10 shadow-2xl;
+}
+
+.button-3d {
+  @apply relative inline-flex items-center justify-center px-6 py-3 font-semibold text-white rounded-xl transition-transform duration-150;
+  transform-style: preserve-3d;
+}
+.button-3d::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 0.75rem;
+  transform: translate3d(0, 6px, -1px);
+  @apply bg-black/30;
+}
+.button-3d:active {
+  transform: translateY(4px);
+}
